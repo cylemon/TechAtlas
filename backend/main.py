@@ -1,4 +1,6 @@
 from fastapi import FastAPI
+from schemas.atlas import AtlasGenerateRequest, AtlasGenerateResponse
+from services.domain_guard import validate_stem_domain
 
 app = FastAPI(
     title="TechAtlas API",
@@ -9,8 +11,12 @@ app = FastAPI(
 
 @app.get("/health")
 async def health_check():
-    """
-    健康检查探针接口
-    用于验证服务运行状态与探针连通性
-    """
     return {"status": "ok"}
+
+
+@app.post("/api/generate", response_model=AtlasGenerateResponse)
+async def generate_atlas(request: AtlasGenerateRequest):
+    """
+    提交技术课题，评估领域合规性并生成图谱
+    """
+    return validate_stem_domain(request.query)
