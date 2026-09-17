@@ -10,7 +10,9 @@ requires-python = ">=3.12"
 dependencies = [
     "fastapi>=0.141.1",
     "httpx>=0.28.1",
+    "pydantic-settings>=2.15.0",
     "pytest>=9.1.1",
+    "python-dotenv>=1.2.3",
     "uvicorn>=0.53.0",
 ]
 
@@ -19,7 +21,15 @@ dependencies = [
 [tool.pytest.ini_options]
 pythonpath = ["."]
 testpaths = ["tests"]
+markers = [
+    "live: 标记需要真实网络与真实 API Key 的集成测试",
+]
 
 # 核心修改：告诉 uv 这是一个应用程序/服务，不需要构建和打包 installable wheel
 [tool.uv]
 package = false
+
+[dependency-groups]
+dev = [
+    "respx>=0.23.1",
+]
