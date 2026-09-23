@@ -1,0 +1,253 @@
+{
+  "$comment": "话题准入判定器的验收案例集。需求来源：docs/spec/01-topic-boundary.md §5。",
+  "$schema_note": "verdict: accept=准入 / reject=硬拒 / narrow=收窄建议；blocked_by: L1=话题越界 L2=意图越界 L3=粒度过宽或过窄，accept 时为 null。",
+  "version": 1,
+  "cases": [
+    {
+      "id": "core-agent-dev",
+      "query": "AI Agent 开发",
+      "topic": "AI Agent 开发",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "四类节点齐备的标准课题，产品的主场景"
+    },
+    {
+      "id": "core-vector-db",
+      "query": "向量数据库",
+      "topic": "向量数据库",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "有明确的技术内核、工具生态与前沿方向"
+    },
+    {
+      "id": "core-rag-stack",
+      "query": "RAG 技术栈",
+      "topic": "RAG 技术栈",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "技术栈类课题，工具体系尤为充实"
+    },
+    {
+      "id": "core-semiconductor-physics",
+      "query": "半导体物理",
+      "topic": "半导体物理",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "应用物理：能带理论 / 光刻工艺 / EDA 工具 / 先进制程，落点在工程"
+    },
+    {
+      "id": "core-superconductor",
+      "query": "超导技术",
+      "topic": "超导技术",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "有真实的材料、器件与应用生态"
+    },
+    {
+      "id": "contrast-quantum-computing",
+      "query": "量子计算",
+      "topic": "量子计算",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "与「量子力学」构成对照：同为量子领域，但存在工具与工程生态"
+    },
+    {
+      "id": "contrast-linalg-in-ml",
+      "query": "机器学习中的线性代数",
+      "topic": "机器学习中的线性代数",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "与「线性代数」构成对照：学科相同，落点在技术应用"
+    },
+    {
+      "id": "core-cfd",
+      "query": "计算流体力学",
+      "topic": "计算流体力学",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "应用数学分支，有成熟的仿真工具生态"
+    },
+    {
+      "id": "core-bioinformatics",
+      "query": "生物信息学",
+      "topic": "生物信息学",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "应用科学，工具链与分析流程构成完整生态"
+    },
+    {
+      "id": "core-prompt-engineering",
+      "query": "提示词工程",
+      "topic": "提示词工程",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "实践性技术课题"
+    },
+    {
+      "id": "core-transformer",
+      "query": "Transformer 架构",
+      "topic": "Transformer 架构",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "粒度适中：既非整个「深度学习」，也非某个具体实现"
+    },
+    {
+      "id": "intent-learning-path",
+      "query": "告诉我 AI Agent 开发该怎么学习",
+      "topic": "AI Agent 开发",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "自然语言输入，意图为「了解学习路线」，在界内"
+    },
+    {
+      "id": "intent-explore-tech",
+      "query": "我想了解 AI Agent 相关的技术",
+      "topic": "AI Agent",
+      "verdict": "accept",
+      "blocked_by": null,
+      "rationale": "自然语言输入，意图为「探索技术版图」，在界内"
+    },
+    {
+      "id": "reject-l1-history",
+      "query": "中国历史",
+      "topic": "中国历史",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "节点是朝代与事件、关系是时序，四类 category 一个都对应不上"
+    },
+    {
+      "id": "reject-l1-poetry",
+      "query": "唐诗鉴赏",
+      "topic": "唐诗鉴赏",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "人文领域，无 sub_technology 与 tool 可填"
+    },
+    {
+      "id": "reject-l1-economics",
+      "query": "宏观经济学",
+      "topic": "宏观经济学",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "社会科学，不构成技术图谱"
+    },
+    {
+      "id": "reject-l1-linalg",
+      "query": "线性代数",
+      "topic": "线性代数",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "与「机器学习中的线性代数」构成对照：落点是理论体系本身，填不出 tool，输出会退化成概念树"
+    },
+    {
+      "id": "reject-l1-quantum-mechanics",
+      "query": "量子力学",
+      "topic": "量子力学",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "与「量子计算」构成对照：核心概念填得满，但没有工具生态"
+    },
+    {
+      "id": "reject-l1-string-theory",
+      "query": "弦论",
+      "topic": "弦论",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "理论物理，落点在理论本身，无工程与工具生态"
+    },
+    {
+      "id": "reject-l1-cognitive-science",
+      "query": "认知科学",
+      "topic": "认知科学",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "落点是自然规律与机理，非技术"
+    },
+    {
+      "id": "reject-l1-ai-ethics",
+      "query": "AI 伦理",
+      "topic": "AI 伦理",
+      "verdict": "reject",
+      "blocked_by": "L1",
+      "rationale": "话题带「AI」但在界外，落点是价值判断而非技术；不写死则判定会摇摆"
+    },
+    {
+      "id": "reject-l2-write-code",
+      "query": "帮我写一段 Agent 的代码",
+      "topic": "AI Agent 开发",
+      "verdict": "reject",
+      "blocked_by": "L2",
+      "rationale": "话题完全在界内，被拒是因为意图；判定器不得归到 L1"
+    },
+    {
+      "id": "reject-l2-comparison",
+      "query": "AI Agent 和 LangChain 哪个好",
+      "topic": "AI Agent 开发",
+      "verdict": "reject",
+      "blocked_by": "L2",
+      "rationale": "要具体选型结论，非版图探索"
+    },
+    {
+      "id": "reject-l2-write-paper",
+      "query": "帮我写一篇关于 AI Agent 的论文",
+      "topic": "AI Agent 开发",
+      "verdict": "reject",
+      "blocked_by": "L2",
+      "rationale": "话题在界内、意图越界，L2 的典型样本"
+    },
+    {
+      "id": "narrow-l3-math",
+      "query": "数学",
+      "topic": "数学",
+      "verdict": "narrow",
+      "blocked_by": "L3",
+      "suggested": ["机器学习中的数学基础", "数值计算", "计算几何"],
+      "rationale": "四类节点都能填但全部泛泛而谈，需收窄到具体方向"
+    },
+    {
+      "id": "narrow-l3-computer",
+      "query": "计算机",
+      "topic": "计算机",
+      "verdict": "narrow",
+      "blocked_by": "L3",
+      "suggested": ["分布式系统", "编译原理", "操作系统"],
+      "rationale": "过宽，拆不出清晰层次"
+    },
+    {
+      "id": "narrow-l3-science",
+      "query": "科学",
+      "topic": "科学",
+      "verdict": "narrow",
+      "blocked_by": "L3",
+      "suggested": ["材料科学", "生物信息学", "气候建模"],
+      "rationale": "过宽，且跨越多个互不相干的技术领域"
+    },
+    {
+      "id": "narrow-l3-ai",
+      "query": "AI",
+      "topic": "AI",
+      "verdict": "narrow",
+      "blocked_by": "L3",
+      "suggested": ["AI Agent 开发", "大模型推理优化", "多模态模型"],
+      "rationale": "过宽，是领域名而非课题"
+    },
+    {
+      "id": "narrow-l3-requests-usage",
+      "query": "requests 库怎么用",
+      "topic": "requests 库",
+      "verdict": "narrow",
+      "blocked_by": "L3",
+      "suggested": ["Python HTTP 客户端生态", "Python 网络编程"],
+      "rationale": "过窄，可独立命名的技术实体不足 6 个"
+    },
+    {
+      "id": "narrow-l3-react-hook",
+      "query": "React useEffect",
+      "topic": "React useEffect",
+      "verdict": "narrow",
+      "blocked_by": "L3",
+      "suggested": ["React Hooks 体系", "React 状态管理"],
+      "rationale": "过窄，单个 API 撑不起一张图谱"
+    }
+  ]
+}

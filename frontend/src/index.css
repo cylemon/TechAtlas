@@ -1,0 +1,17 @@
+@import "tailwindcss";
+
+/*
+ * 生成过程中每到达一个节点都会整图重排。没有过渡的话，已有节点会被硬切到
+ * 新坐标，看上去像画面在抖；加上过渡就变成平滑地让位给新节点。
+ *
+ * 首次挂载时不会触发：新建的元素没有"上一个"transform 值，浏览器不做补间。
+ *
+ * 拖拽中的节点必须排除——否则节点会滞后于光标，像被橡皮筋拽着。
+ */
+.react-flow__node {
+    transition: transform 350ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.react-flow__node.dragging {
+    transition: none;
+}

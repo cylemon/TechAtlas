@@ -1,7 +1,7 @@
 import pytest
 import respx
 from httpx import Response
-from services.llm_factory import LLMFactory
+from services.llm.factory import LLMFactory
 
 # ------------------------------------------------------------------
 # 1. 真实网络测试 (Live Integration Tests)
@@ -9,7 +9,6 @@ from services.llm_factory import LLMFactory
 
 
 @pytest.mark.live
-@pytest.mark.anyio
 async def test_deepseek_live_generate():
     """真实调用 DeepSeek API，验证非流式生成"""
     service = LLMFactory.create(provider="deepseek")
@@ -22,7 +21,6 @@ async def test_deepseek_live_generate():
 
 
 @pytest.mark.live
-@pytest.mark.anyio
 async def test_deepseek_live_generate_stream():
     """真实调用 DeepSeek API，验证 SSE 流式输出"""
     service = LLMFactory.create(provider="deepseek")
@@ -40,7 +38,6 @@ async def test_deepseek_live_generate_stream():
 # ------------------------------------------------------------------
 
 
-@pytest.mark.anyio
 async def test_deepseek_generate_stream_malformed_lines():
     """验证 generate_stream 遇到心跳包、坏 JSON 或异常格式时能优雅跳过而不崩溃"""
     # 使用工厂创建实例，传入自定义 api_key 覆盖配置，自动补全默认 base_url 与 model

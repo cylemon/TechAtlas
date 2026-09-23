@@ -17,13 +17,8 @@ dependencies = [
 ]
 
 
-# 告诉 pytest 将当前目录设为 Python 搜索路径，解决 ModuleNotFoundError: No module named 'main'
-[tool.pytest.ini_options]
-pythonpath = ["."]
-testpaths = ["tests"]
-markers = [
-    "live: 标记需要真实网络与真实 API Key 的集成测试",
-]
+# pytest 配置统一放在 pytest.ini（pytest.ini 优先级高于 pyproject.toml，
+# 两处同时存在时此处会被忽略，故不再重复声明）
 
 # 核心修改：告诉 uv 这是一个应用程序/服务，不需要构建和打包 installable wheel
 [tool.uv]
@@ -31,5 +26,6 @@ package = false
 
 [dependency-groups]
 dev = [
+    "pytest-asyncio>=1.4.0",
     "respx>=0.23.1",
 ]

@@ -14,8 +14,10 @@ dist/
 downloads/
 eggs/
 .eggs/
-lib/
-lib64/
+# 注意：不能用裸的 lib/ —— 它会在任意层级匹配，把前端合法的
+# frontend/src/lib/ 一起吃掉。这里限定到 Python 项目根（backend/）
+backend/lib/
+backend/lib64/
 parts/
 sdist/
 var/
@@ -216,3 +218,7 @@ __marimo__/
 
 # Streamlit
 .streamlit/secrets.toml
+
+# AI 编码助手配置
+#   本项目不绑定任何特定的编码 agent，故不提交任何 agent 的本地配置
+.claude/
